@@ -5,7 +5,7 @@ export default function Home() {
     <div>
       <Navbar />
       <div className="container">
-        <h1>The International Product Genuine</h1>
+        <h1>The International Product</h1>
       </div>
     </div>
   );
