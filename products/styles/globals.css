@@ -73,6 +73,11 @@ html,
 body {
   max-width: 100vw;
   overflow-x: hidden;
+  background-image: url("/toko.jpg");
+  background-color: #cccccc;
+  height: 100%;
+  margin: 0;
+  padding: 0;
 }
 
 a {
@@ -85,6 +90,8 @@ a {
   padding: 20px;
   width: 100%;
   margin-bottom: 20px;
+  font-size: large;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
 .navbar-list {
@@ -105,13 +112,20 @@ a {
 }
 
 .navbar-link:hover {
-  background-color: #e2122d;
+  background-color: #590bf7;
   border-radius: 4px;
 }
 
 .container {
   margin-right: 200px;
   margin-left: 200px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #690077; /* Warna latar belakang */
+  text-align: center;
 }
 
 .table {
@@ -127,13 +141,13 @@ a {
 }
 
 .table th {
-  background-color: #e2122d;
+  background-color: #3307f8;
   color: #fff;
   
 }
 
 .table td {
-  border-bottom: 1px solid #ca1616;
+  border-bottom: 3px solid #3307f8;
   
 }
 
@@ -160,150 +174,11 @@ a {
 }
 
 .btn-blue {
-  background-color: #e2122d;
-}
-
-.btn-blue:hover {
-  background-color: #e2122d;
-}
-
-#btnadd {
-  display: block;
-  margin-top: 20px;
-  padding: 8px 12px;
-  font-size: 14px;
-  font-weight: bold;
-  text-align: center;
-  text-decoration: none;
-  background-color: #e2122d;
-  color: #fff;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-#btnadd:hover {
-  background-color: #e2122d;
-}
-.container{
-  text-align: center;
-  
-}
-#formadd {
-  max-width: 500px;
-  margin: 0 auto;
-  padding: 20px;
-  background-color: #f2f2f2;
-  border-radius: 4px;
-}
-
-#formadd table {
-  width: 100%;
-}
-
-#formadd table td {
-  padding: 10px 0;
-}
-
-#formadd label {
-  font-weight: bold;
-}
-
-#formadd .text {
-  width: 100%;
-  padding: 8px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
-
-#formadd .row-btn {
-  margin-top: 20px;
-  text-align: right;
-}
-
-.btn {
-  display: inline-block;
-  padding: 8px 12px;
-  font-size: 14px;
-  font-weight: bold;
-  text-align: center;
-  text-decoration: none;
-  background-color: #e2122d;
-  color: #fff;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-.btn-blue {
-  background-color: #e2122d;
-  margin-right: 10px;
-}
-
-.btn-blue:hover {
-  background-color: #e2122d;
-}
-
-#formedit {
-  max-width: 500px;
-  margin: 0 auto;
-  padding: 20px;
-  background-color: #f2f2f2;
-  border-radius: 4px;
-}
-
-#formedit table {
-  width: 100%;
-}
-
-#formedit table td {
-  padding: 10px 0;
-}
-
-#formedit label {
-  font-weight: bold;
-}
-
-#formedit .text {
-  width: 100%;
-  padding: 8px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
-
-#formedit .row-btn {
-  margin-top: 20px;
-  text-align: right;
-}
-
-#formedit img {
-  display: block;
-  max-width: 80px;
-  height: auto;
-  margin-top: 10px;
-  border-radius: 4px;
-}
-
-.btn {
-  display: inline-block;
-  padding: 8px 12px;
-  font-size: 14px;
-  font-weight: bold;
-  text-align: center;
-  text-decoration: none;
-  background-color: #e2122d;
-  color: #fff;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-.btn-blue {
   background-color: #0e0107d8;
 }
 
 .btn-blue:hover {
-  background-color: #e2122d;
+  background-color: #4013bb;
 }
 
 .card-container {

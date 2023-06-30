@@ -51,7 +51,7 @@ export default function ProductList() {
   const handleEditProduct = async (event) => {
     event.preventDefault();
     const id = selectedProduct.id;
-  
+
     const updatedProduct = {
       title,
       price,
@@ -59,14 +59,20 @@ export default function ProductList() {
       detail,
       foto,
     };
-  
+
     const formData = new FormData();
     formData.append('title', updatedProduct.title);
     formData.append('price', updatedProduct.price);
     formData.append('weight', updatedProduct.weight);
     formData.append('detail', updatedProduct.detail);
-    formData.append('images', updatedProduct.foto);
-  
+
+    // Check if a new image is selected
+    if (foto instanceof File) {
+      formData.append('images', foto);
+    } else {
+      formData.append('images', updatedProduct.foto); // Use the existing foto value
+    }
+
     try {
       await koneksiProducts.put(`/${id}`, formData, {
         headers: {
@@ -81,7 +87,8 @@ export default function ProductList() {
       console.error('Error updating product:', error);
     }
   };
-  
+
+
 
   const handleDeleteProduct = async (id) => {
     try {
@@ -93,7 +100,7 @@ export default function ProductList() {
       console.error("Error deleting product:", error);
     }
   };
-  
+
 
   const handleAdd = () => {
     setIsAdding(true);
@@ -110,7 +117,9 @@ export default function ProductList() {
     setPrice(product.price);
     setWeight(product.weight);
     setDescription(product.detail);
+    setImage(product.foto); // Set the existing image URL
   };
+
 
   const handleCancel = () => {
     setIsAdding(false);
@@ -230,7 +239,10 @@ export default function ProductList() {
               <input
                 type="file"
                 name="images"
-                onChange={(e) => setImage(e.target.files[0])}
+                onChange={(e) => {
+                  setImage(e.target.files[0]);
+                  e.target.parentNode.childNodes[1].innerText = e.target.files[0].name;
+                }}
               />
             </div>
             <button type="submit" className="btn btn-blue">
@@ -268,7 +280,7 @@ export default function ProductList() {
                   </button>
                   <button className="btn btn-blue" onClick={() => handleDeleteProduct(product.id)}>
                     Delete
-                    </button>
+                  </button>
                 </td>
               </tr>
             ))}

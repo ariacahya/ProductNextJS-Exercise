@@ -94,53 +94,51 @@ app.get('/api/products', (req, res) => {
 
 
 // update data
-app.put('/api/products/:id', upload.single('foto'), (req, res) => {
+app.put('/api/products/:id', upload.single('images'), (req, res) => {
     const id = req.params.id;
-    const { title,price,weight,detail } = req.body;
-    const foto = req.file ? req.file.filename : null;
+    const { title, price, weight, detail } = req.body;
+    const foto = req.file ? 'http://localhost:5000/images/' + req.file.filename : null;
 
-        const query = 'UPDATE products SET title = ?, price = ?, weight = ?, detail = ? WHERE nim = ?';
-        connection.query(query, [title, foto, price, weight, detail], (err, result) => {
-            if (err) {
-                console.error(err);
-                return res.status(500).json({ message: 'Terjadi kesalahan saat memperbarui mahasiswa' });
-            }
-
-           else {
-                res.json({ message: 'Mahasiswa berhasil diperbarui' });
-            }
-        });
+    const query = 'UPDATE products SET title = ?, price = ?, weight = ?, detail = ?, foto = ? WHERE id = ?';
+    koneksi.query(query, [title, price, weight, detail, foto, id], (err, result) => {
+        if (err) {
+            console.error(err);
+            return res.status(500).json({ message: 'Terjadi kesalahan saat memperbarui produk' });
+        } else {
+            res.json({ message: 'Produk berhasil diperbarui' });
+        }
     });
-  
+});
+
 // delete data
 app.delete('/api/products/:id', (req, res) => {
     const productId = req.params.id;
     const querySearch = 'SELECT * FROM products WHERE id = ?';
     const queryDelete = 'DELETE FROM products WHERE id = ?';
-  
+
     koneksi.query(querySearch, productId, (err, rows, fields) => {
-      if (err) {
-        return res.status(500).json({ message: 'Ada kesalahan', error: err });
-      }
-  
-      if (rows.length) {
-        koneksi.query(queryDelete, productId, (err, result) => {
-          if (err) {
+        if (err) {
             return res.status(500).json({ message: 'Ada kesalahan', error: err });
-          }
-  
-          if (result.affectedRows > 0) {
-            res.status(200).json({ success: true, message: 'Berhasil hapus data!' });
-          } else {
-            res.status(500).json({ success: false, message: 'Gagal menghapus data!' });
-          }
-        });
-      } else {
-        res.status(404).json({ message: 'Data tidak ditemukan!', success: false });
-      }
+        }
+
+        if (rows.length) {
+            koneksi.query(queryDelete, productId, (err, result) => {
+                if (err) {
+                    return res.status(500).json({ message: 'Ada kesalahan', error: err });
+                }
+
+                if (result.affectedRows > 0) {
+                    res.status(200).json({ success: true, message: 'Berhasil hapus data!' });
+                } else {
+                    res.status(500).json({ success: false, message: 'Gagal menghapus data!' });
+                }
+            });
+        } else {
+            res.status(404).json({ message: 'Data tidak ditemukan!', success: false });
+        }
     });
-  });
-  
+});
+
 
 // buat server nya
 app.listen(PORT, () => console.log(`Server running at port: ${PORT}`));

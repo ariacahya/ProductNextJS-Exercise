@@ -5,7 +5,7 @@ export default function About() {
     <div>
       <Navbar />
       <div className="container">
-        <h1>Ini Halaman About</h1>
+        <h1>Kami bangga menyediakan produk berkualitas tinggi yang dirancang untuk memenuhi kebutuhan Anda. Dengan dedikasi dan inovasi kami, kami menghadirkan produk terbaik dengan desain yang elegan dan fungsional</h1>
       </div>
     </div>
   );
